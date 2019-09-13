@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
-* Студент: [Неопознанный енот](https://up.htmlacademy.ru/javascript/18/user/1069133).
-* Наставник: `Неизвестно`.
+* Студент: Екатерина Браун(https://up.htmlacademy.ru/javascript/18/user/1069133).
+* Наставник: Артем Черкасов.
 
 ---
 
