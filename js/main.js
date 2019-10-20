@@ -71,9 +71,9 @@ var pinsTemplate = document.querySelector('#pin').content.querySelector('.map__p
 
 var renderPin = function (pin) {
   var pinElement = pinsTemplate.cloneNode(true);
-  pinElement.style.left = pin.location.x;
-  pinElement.style.top = pin.location.y;
-  pinElement.src = pin.author.avatar;
+  pinElement.style.left = pin.location.x + 'px';
+  pinElement.style.top = pin.location.y + 'px';
+  pinElement.querySelector('img').src = 'img/avatars/user' + pin.author.avatar + '.png';
   pinElement.alt = pin.title;
   return pinElement;
 };
