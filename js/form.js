@@ -6,7 +6,11 @@
   var MAINPINEND_HEIGHT = 22;
 
   var form = document.querySelector('.notice').querySelector('.ad-form');
-  form.classList.add('ad-form--disabled');
+
+  var getUnaktiveForm = function () {
+    form.classList.add('ad-form--disabled');
+  };
+  getUnaktiveForm();
 
   var fieldsetElements = form.querySelectorAll('fieldset');
   for (var i = 0; i < fieldsetElements.length; i++) {
@@ -20,44 +24,30 @@
   var adressInput = document.querySelector('#address');
   var offsetTop = 375;
   var offsetLeft = 570;
-  adressInput.value = (offsetLeft + MAINPIN_WIDTH * 0.5) + ', ' + (offsetTop + MAINPIN_HEIGHT * 0.5);
+
   var setActiveAdressField = function () {
     adressInput.value = (offsetLeft + MAINPIN_WIDTH * 0.5) + ', ' + (offsetTop + MAINPINEND_HEIGHT + MAINPIN_HEIGHT * 0.5);
   };
+  setActiveAdressField(MAINPIN_WIDTH);
+
 
   var roomNumberInput = form.querySelector('#room_number');
   var guestsNumberInput = form.querySelector('#capacity');
 
   var checkRoomNumber = function () {
     if (roomNumberInput.value === '1') {
-      var capacityGuests = '1';
-      if (guestsNumberInput.value === capacityGuests) {
-        guestsNumberInput.setCustomValidity('');
-      } else {
-        guestsNumberInput.setCustomValidity('Введено неправильное значение');
-      }
-
+      var capacityGuests = ['1'];
     } else if (roomNumberInput.value === '2') {
       capacityGuests = ['2', '1'];
-      if (capacityGuests.includes(guestsNumberInput.value)) {
-        guestsNumberInput.setCustomValidity('');
-      } else {
-        guestsNumberInput.setCustomValidity('Введено неправильное значение');
-      }
     } else if (roomNumberInput.value === '3') {
       capacityGuests = ['3', '2', '1'];
-      if (capacityGuests.includes(guestsNumberInput.value)) {
-        guestsNumberInput.setCustomValidity('');
-      } else {
-        guestsNumberInput.setCustomValidity('Введено неправильное значение');
-      }
     } else if (roomNumberInput.value === '100') {
       capacityGuests = '0';
-      if (guestsNumberInput.value === capacityGuests) {
-        guestsNumberInput.setCustomValidity('');
-      } else {
-        guestsNumberInput.setCustomValidity('Введено неправильное значение');
-      }
+    }
+    if (capacityGuests.includes(guestsNumberInput.value)) {
+      guestsNumberInput.setCustomValidity('');
+    } else {
+      guestsNumberInput.setCustomValidity('Введено неправильное значение');
     }
   };
 
@@ -126,4 +116,12 @@
     checkTimeIn();
     checkTitle();
   };
+
+  window.form = {
+    checkValidationForm: checkValidationForm,
+    setActiveAdressField: setActiveAdressField,
+    fieldsetElements: fieldsetElements,
+    filters: filters,
+  };
 })();
+

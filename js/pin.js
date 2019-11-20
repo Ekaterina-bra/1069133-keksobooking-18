@@ -10,4 +10,7 @@
     pinElement.alt = pin.title;
     return pinElement;
   };
+  window.data = {
+    render: renderPin,
+  };
 })();

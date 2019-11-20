@@ -67,4 +67,7 @@
     }
     return adds;
   };
+  window.data = {
+    generateAdds: generateAdds,
+  };
 })();
